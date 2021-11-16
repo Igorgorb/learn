@@ -68,13 +68,13 @@ class Main {
     int startPos = 1;
     int endPos = array[0];
     System.out.println(String.format("start value- %3d, posCurrentMax - %3d, startPos - %3d, endPos - %3d",
-      array[0], 0, 1, endPos));
+            array[0], 0, 0, endPos));
     while (endPos < array.length) {
-      countJump++;
 //    for (int i = startPos; i <= endPos; i++) {
+      countJump++;
       int currentMax = array[endPos];
-      int posCurrentMax = endPos;
-      for (int i = endPos; i >startPos; i--) {
+      int posCurrentMax = currentMax == 0 ? 0 : endPos;
+      for (int i = endPos; i >= startPos; i--) {
         if ((posCurrentMax + currentMax) <= (i + array[i])) {
           currentMax = array[i];
           posCurrentMax = i;
@@ -86,7 +86,7 @@ class Main {
       startPos = posCurrentMax + 1;
       endPos = startPos + currentMax - 1;
       System.out.println(String.format("currentMax - %3d, posCurrentMax - %3d, startPos - %3d, endPos - %3d",
-        currentMax, posCurrentMax, startPos, endPos));
+              currentMax, posCurrentMax, startPos, endPos));
     }
     return countJump;
   }
